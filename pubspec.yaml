@@ -1,0 +1,48 @@
+name: dialog
+description: Premium dark language marketplace app (Frontend only)
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # STATE MANAGEMENT
+  flutter_riverpod: ^2.5.1
+
+  # ROUTING
+  go_router: ^14.2.0
+
+  # FONTS
+  google_fonts: ^6.2.1
+
+  # ANIMATIONS
+  flutter_animate: ^4.5.0
+
+  # FORMAT / UTILS
+  intl: ^0.19.0
+
+  # ICONS (Premium)
+  flutter_svg: ^2.0.10+1
+
+  # OPTIONAL: shimmer loading effects
+  shimmer: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
