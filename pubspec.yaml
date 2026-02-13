@@ -28,16 +28,23 @@ dependencies:
   # FORMAT / UTILS
   intl: ^0.19.0
 
-  # ICONS (Premium)
+  # ICONS
   flutter_svg: ^2.0.10+1
 
   # OPTIONAL: shimmer loading effects
   shimmer: ^3.0.0
 
+  # 🎙 AUDIO RECORDING
+  record: ^6.2.0
+  path_provider: ^2.1.2
+
+  # ▶ AUDIO PLAYBACK
+  just_audio: ^0.9.36
+  audio_session: ^0.1.21
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^6.0.0
 
 flutter:

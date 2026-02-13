@@ -8,6 +8,12 @@ class UserCardModel {
   final int dialogsCount;
   final int coins;
 
+  /// Online status
+  final bool isOnline;
+
+  /// Last seen time (agar offline bo‘lsa)
+  final DateTime? lastSeen;
+
   UserCardModel({
     required this.name,
     required this.age,
@@ -17,6 +23,10 @@ class UserCardModel {
     required this.languages,
     required this.dialogsCount,
     required this.coins,
+
+    /// DEFAULT VALUES (conflicts bo‘lmaydi)
+    this.isOnline = true,
+    this.lastSeen,
   });
 }
 

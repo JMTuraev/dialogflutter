@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/user_card_model.dart';
-import '../../profile/user_profile_screen.dart';
+import '../../chat/screens/chat_screen.dart';
 
 class UserCard extends StatelessWidget {
   final UserCardModel user;
@@ -45,7 +45,7 @@ class UserCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => UserProfileScreen(user: user),
+              builder: (_) => ChatScreen(user: user),
             ),
           );
         },
