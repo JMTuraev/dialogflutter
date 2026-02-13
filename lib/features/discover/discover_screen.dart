@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models/user_card_model.dart';
 import 'widgets/user_card.dart';
+import 'widgets/discover_header.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
@@ -14,14 +15,14 @@ class DiscoverScreen extends StatelessWidget {
       photoUrl: "https://randomuser.me/api/portraits/men/10.jpg",
       nativeLanguage: "Uzbek",
       languages: [
+        LanguageModel(language: "Uzbek", level: "C2"),
         LanguageModel(language: "English", level: "C1"),
         LanguageModel(language: "Russian", level: "B2"),
         LanguageModel(language: "German", level: "A2"),
-        LanguageModel(language: "Spanish", level: "B1"),
-        LanguageModel(language: "French", level: "B1"),
       ],
       dialogsCount: 210,
       coins: 1250,
+      isOnline: true,
     );
 
     final users = [
@@ -32,11 +33,13 @@ class DiscoverScreen extends StatelessWidget {
         photoUrl: "https://randomuser.me/api/portraits/men/32.jpg",
         nativeLanguage: "English",
         languages: [
+          LanguageModel(language: "English", level: "C2"),
           LanguageModel(language: "Spanish", level: "B2"),
           LanguageModel(language: "German", level: "A2"),
         ],
         dialogsCount: 124,
         coins: 580,
+        isOnline: true,
       ),
       UserCardModel(
         name: "Sara Kim",
@@ -45,11 +48,13 @@ class DiscoverScreen extends StatelessWidget {
         photoUrl: "https://randomuser.me/api/portraits/women/44.jpg",
         nativeLanguage: "Korean",
         languages: [
+          LanguageModel(language: "Korean", level: "C2"),
           LanguageModel(language: "English", level: "C1"),
           LanguageModel(language: "Japanese", level: "B1"),
         ],
         dialogsCount: 89,
         coins: 430,
+        isOnline: false,
       ),
     ];
 
@@ -62,21 +67,12 @@ class DiscoverScreen extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           children: [
-            const Text(
-              "DIALOG",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.2,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 24),
-            UserCard(
-              user: currentUser,
-              isPinned: true,
-            ),
-            const SizedBox(height: 32),
+            /// HEADER
+            DiscoverHeader(currentUser: currentUser),
+
+            const SizedBox(height: 30),
+
+            /// USERS LIST
             ...users.map(
               (user) => Padding(
                 padding: const EdgeInsets.only(bottom: 24),
