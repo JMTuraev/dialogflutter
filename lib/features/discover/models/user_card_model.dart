@@ -11,8 +11,11 @@ class UserCardModel {
   /// Online status
   final bool isOnline;
 
-  /// Last seen time (agar offline bo‘lsa)
+  /// Last seen time
   final DateTime? lastSeen;
+
+  /// 🔥 Chat filter uchun
+  final bool hasChat;
 
   UserCardModel({
     required this.name,
@@ -23,10 +26,9 @@ class UserCardModel {
     required this.languages,
     required this.dialogsCount,
     required this.coins,
-
-    /// DEFAULT VALUES (conflicts bo‘lmaydi)
     this.isOnline = true,
     this.lastSeen,
+    this.hasChat = false,
   });
 }
 

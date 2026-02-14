@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import '../models/user_card_model.dart';
-import '../../chat/screens/chat_screen.dart';
 
 class UserCard extends StatelessWidget {
   final UserCardModel user;
   final bool isPinned;
+  final VoidCallback? onTap; // 👈 universal navigation hook
 
   const UserCard({
     super.key,
     required this.user,
     this.isPinned = false,
+    this.onTap,
   });
 
-  int levelToInt(String level) {
+  int _levelToInt(String level) {
     switch (level) {
       case "A1":
         return 1;
@@ -41,14 +42,7 @@ class UserCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => ChatScreen(user: user),
-            ),
-          );
-        },
+        onTap: onTap, // 👈 tashqaridan boshqariladi
         child: Stack(
           children: [
             /// TOP RIGHT STATS
@@ -123,7 +117,7 @@ class UserCard extends StatelessWidget {
                           physics: const BouncingScrollPhysics(),
                           child: Row(
                             children: sortedLanguages.map((lang) {
-                              final level = levelToInt(lang.level);
+                              final level = _levelToInt(lang.level);
                               final isNative =
                                   lang.language == user.nativeLanguage;
 
@@ -132,6 +126,7 @@ class UserCard extends StatelessWidget {
                                 child: Stack(
                                   clipBehavior: Clip.none,
                                   children: [
+                                    /// LANGUAGE BOX
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 10,
@@ -159,6 +154,8 @@ class UserCard extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(height: 4),
+
+                                          /// LEVEL DOTS
                                           Row(
                                             children: List.generate(
                                               5,
@@ -181,14 +178,16 @@ class UserCard extends StatelessWidget {
                                       ),
                                     ),
 
-                                    /// Native badge
+                                    /// NATIVE BADGE
                                     if (isNative)
                                       Positioned(
                                         right: -6,
                                         top: -6,
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(
-                                              horizontal: 6, vertical: 2),
+                                            horizontal: 6,
+                                            vertical: 2,
+                                          ),
                                           decoration: BoxDecoration(
                                             color: Colors.blueAccent,
                                             borderRadius:

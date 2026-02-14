@@ -31,6 +31,7 @@ class DiscoverMockData {
       dialogsCount: 124,
       coins: 580,
       isOnline: true,
+      hasChat: true, // 🔥 yozishilgan
     ),
     UserCardModel(
       name: "Sara Kim",
@@ -45,6 +46,8 @@ class DiscoverMockData {
       dialogsCount: 89,
       coins: 430,
       isOnline: false,
+      lastSeen: DateTime.now().subtract(const Duration(minutes: 20)),
+      hasChat: true,
     ),
     ...List.generate(18, (index) {
       final id = index + 50;
@@ -62,6 +65,7 @@ class DiscoverMockData {
         dialogsCount: 50 + index * 3,
         coins: 200 + index * 15,
         isOnline: index % 3 == 0,
+        hasChat: index % 4 == 0, // 🔥 filter uchun
       );
     }),
   ];
